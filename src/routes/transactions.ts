@@ -4,6 +4,15 @@ import { randomUUID } from 'node:crypto'
 import { knex } from '../database'
 import { checkSessionIdExists } from '../middlewares/check-session-id-exists'
 
+// Unitários: unidade da sua  aplicação
+// Integração: comunicação entre duas ou mais unidades
+// e2e: ponta a ponta - simulam um usuário operando na nossa aplicação
+
+// front-end: abre a página de login, digite o texto cleltonjm_95@hotmail.com no campo ID email, clique no botão
+// back-end: chamadas HTTP, WebSockets
+
+//   Pirâmide de testes: E2E (Não dependem de nenhuma tecnologia, não dependem de arquitetura)
+
 export async function transactionsRoutes(app: FastifyInstance) {
     app.addHook('preHandler', async (request, reply) => {
         console.log(`[${request.method}] ${request.url}`)
